@@ -33,21 +33,6 @@ class ProductService {
             try {
                 const { filter } = _query;
                 const { sort, page, limit, q, category, subcategory, stock, color, type, size, price, minPrice, maxPrice, createdAt, updatedAt, } = filter !== null && filter !== void 0 ? filter : {};
-                console.log({
-                    sort,
-                    q,
-                    category,
-                    subcategory,
-                    stock,
-                    color,
-                    type,
-                    size,
-                    price: price === null || price === void 0 ? void 0 : price.range,
-                    minPrice,
-                    maxPrice,
-                    createdAt,
-                    updatedAt,
-                });
                 const { take, offset: skip, page: currentPage, limit: queryLimit, } = (0, utils_1.getPaginationParams)(page, limit);
                 const whereFilter = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ deletedAt: null }, (category && {
                     category: {

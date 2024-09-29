@@ -144,8 +144,6 @@ export const validateResetPasswordCode = asyncHandler(
       await authService.validateResetPasswordCode(email, code, next);
     if (!validateResetPasswordCode) return;
 
-    console.log(validateResetPasswordCode, "validate")
-
     const changePassword = await authService.changePassword(
       email,
       newPassword,

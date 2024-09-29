@@ -98,11 +98,28 @@ class UserService {
             const { id: _id, payload: _payload } = dto;
             try {
                 const user = yield this.getUser({ id: _id }, _next);
+                if (!user) {
+                    throw new errorResponse_1.ErrorResponse(constants_1.ERROR_MESSAGES.USER_NOT_FOUND, constants_1.HTTP_STATUS_CODE[400].code);
+                }
+                // Construct the payload by merging user details with new data
                 const updatedUser = yield prisma_1.default.user.update({
                     where: { id: _id },
-                    data: Object.assign(Object.assign(Object.assign({}, _payload === null || _payload === void 0 ? void 0 : _payload.inputs), ((_payload === null || _payload === void 0 ? void 0 : _payload.password) && {
+                    data: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, (user && {
+                        // retain existing fields if not updated
+                        firstName: (_payload === null || _payload === void 0 ? void 0 : _payload.firstName) || user.firstName,
+                        lastName: (_payload === null || _payload === void 0 ? void 0 : _payload.lastName) || user.lastName,
+                        email: (_payload === null || _payload === void 0 ? void 0 : _payload.email) || user.email,
+                        phone: (_payload === null || _payload === void 0 ? void 0 : _payload.phone) || user.phone,
+                        address: (_payload === null || _payload === void 0 ? void 0 : _payload.address) || user.address,
+                    })), ((_payload === null || _payload === void 0 ? void 0 : _payload.password) && {
                         password: _payload === null || _payload === void 0 ? void 0 : _payload.password,
-                    })), ((_payload === null || _payload === void 0 ? void 0 : _payload.avatar) && { avatar: (_payload === null || _payload === void 0 ? void 0 : _payload.avatar) || (user === null || user === void 0 ? void 0 : user.avatar) })),
+                    })), (_payload.firstName && {
+                        firstName: (_payload === null || _payload === void 0 ? void 0 : _payload.firstName) || user.firstName,
+                    })), (_payload.lastName && {
+                        lastName: (_payload === null || _payload === void 0 ? void 0 : _payload.lastName) || user.lastName,
+                    })), (_payload.email && { email: (_payload === null || _payload === void 0 ? void 0 : _payload.email) || user.email })), (_payload.phone && { phone: (_payload === null || _payload === void 0 ? void 0 : _payload.phone) || user.phone })), (_payload.address && {
+                        address: (_payload === null || _payload === void 0 ? void 0 : _payload.address) || user.address,
+                    })), ((_payload === null || _payload === void 0 ? void 0 : _payload.avatar) && { avatar: (_payload === null || _payload === void 0 ? void 0 : _payload.avatar) || user.avatar })),
                 });
                 if (!updatedUser) {
                     throw new errorResponse_1.ErrorResponse(constants_1.ERROR_MESSAGES.PROFILE_UPDATE_FAILED, constants_1.HTTP_STATUS_CODE[400].code);

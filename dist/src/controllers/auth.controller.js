@@ -119,7 +119,6 @@ exports.validateResetPasswordCode = (0, async_1.asyncHandler)((req, res, next) =
     const validateResetPasswordCode = yield authService.validateResetPasswordCode(email, code, next);
     if (!validateResetPasswordCode)
         return;
-    console.log(validateResetPasswordCode, "validate");
     const changePassword = yield authService.changePassword(email, newPassword, next);
     if (!changePassword)
         return;

@@ -64,14 +64,11 @@ exports.updateUser = (0, async_js_1.asyncHandler)((req, res, next) => __awaiter(
         });
     }
     let updatedPassword = null;
-    console.log({ password });
     if (password) {
         updatedPassword = yield authService.hashPassword(password);
     }
-    const payload = Object.assign(Object.assign(Object.assign({}, inputs), (updatedPassword && { password: updatedPassword })), (avatar && { avatar }));
-    console.log({ payload });
+    const payload = Object.assign(Object.assign(Object.assign({}, (updatedPassword && { password: updatedPassword })), (avatar && { avatar })), inputs);
     const updatedUser = yield userService.update({ id, payload }, next);
-    console.log({ updatedUser });
     res.status(200).json({
         message: "User updated successfully",
         data: updatedUser,

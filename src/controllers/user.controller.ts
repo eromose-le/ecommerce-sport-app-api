@@ -52,21 +52,18 @@ export const updateUser = asyncHandler(async (req, res, next) => {
 
   let updatedPassword = null;
 
-  console.log({ password });
   if (password) {
     updatedPassword = await authService.hashPassword(password);
   }
 
   const payload: Partial<UpdateUserDto> = {
-    ...inputs,
     ...(updatedPassword && { password: updatedPassword }),
     ...(avatar && { avatar }),
+    ...inputs,
   };
 
-  console.log({ payload });
   const updatedUser = await userService.update({ id, payload }, next);
 
-  console.log({ updatedUser });
   res.status(200).json({
     message: "User updated successfully",
     data: updatedUser,

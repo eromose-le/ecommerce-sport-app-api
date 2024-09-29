@@ -103,14 +103,41 @@ export class UserService {
 
     try {
       const user = await this.getUser({ id: _id }, _next);
+
+      if (!user) {
+        throw new ErrorResponse(
+          ERROR_MESSAGES.USER_NOT_FOUND,
+          HTTP_STATUS_CODE[400].code
+        );
+      }
+
+      // Construct the payload by merging user details with new data
       const updatedUser = await prisma.user.update({
         where: { id: _id },
         data: {
-          ..._payload?.inputs,
+          ...(user && {
+            // retain existing fields if not updated
+            firstName: _payload?.firstName || user.firstName,
+            lastName: _payload?.lastName || user.lastName,
+            email: _payload?.email || user.email,
+            phone: _payload?.phone || user.phone,
+            address: _payload?.address || user.address,
+          }),
           ...(_payload?.password && {
             password: _payload?.password,
           }),
-          ...(_payload?.avatar && { avatar: _payload?.avatar || user?.avatar }),
+          ...(_payload.firstName && {
+            firstName: _payload?.firstName || user.firstName,
+          }),
+          ...(_payload.lastName && {
+            lastName: _payload?.lastName || user.lastName,
+          }),
+          ...(_payload.email && { email: _payload?.email || user.email }),
+          ...(_payload.phone && { phone: _payload?.phone || user.phone }),
+          ...(_payload.address && {
+            address: _payload?.address || user.address,
+          }),
+          ...(_payload?.avatar && { avatar: _payload?.avatar || user.avatar }),
         },
       });
 

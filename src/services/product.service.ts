@@ -47,22 +47,6 @@ export class ProductService {
         updatedAt,
       } = filter ?? {};
 
-      console.log({
-        sort,
-        q,
-        category,
-        subcategory,
-        stock,
-        color,
-        type,
-        size,
-        price: price?.range,
-        minPrice,
-        maxPrice,
-        createdAt,
-        updatedAt,
-      });
-
       const {
         take,
         offset: skip,
