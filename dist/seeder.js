@@ -43,67 +43,126 @@ function seedUsers() {
 }
 function seedCategoriesAndProducts() {
     return __awaiter(this, void 0, void 0, function* () {
-        const sportsEquipment = yield prisma.category.create({
-            data: {
-                id: "123e4567-e89b-12d3-a456-426614174001",
-                name: "Sports Equipment",
-                description: "Various sports equipment",
-                subcategories: {
-                    create: [
-                        {
-                            id: "123e4567-e89b-12d3-a456-426614174007",
-                            name: "Basketball",
-                            description: "Basketball equipment",
-                        },
-                    ],
+        const categories = [
+            {
+                id: "123e4567-e89b-12d3-a456-426614174014",
+                name: "ATHLETIC ACCESSORIES",
+                description: "Accessories for athletic activities",
+                subcategories: [
+                    {
+                        id: "123e4567-e89b-12d3-a456-426614174015",
+                        name: "Other Accessories",
+                    },
+                    { id: "123e4567-e89b-12d3-a456-426614174016", name: "Sports Bags" },
+                    { id: "123e4567-e89b-12d3-a456-426614174017", name: "Towels" },
+                    { id: "123e4567-e89b-12d3-a456-426614174018", name: "Water Bottles" },
+                    {
+                        id: "123e4567-e89b-12d3-a456-426614174019",
+                        name: "Weightlifting Belt",
+                    },
+                ],
+            },
+            {
+                id: "123e4567-e89b-12d3-a456-426614174020",
+                name: "ATHLETIC APPARELS",
+                description: "Clothing, footwear, and accessories for athletes",
+                subcategories: [
+                    { id: "123e4567-e89b-12d3-a456-426614174021", name: "Accessories" },
+                    { id: "123e4567-e89b-12d3-a456-426614174022", name: "Clothing" },
+                    { id: "123e4567-e89b-12d3-a456-426614174023", name: "Footwear" },
+                ],
+            },
+            {
+                id: "123e4567-e89b-12d3-a456-426614174024",
+                name: "ELECTRONICS AND GADGETS",
+                description: "Electronic devices for sports and fitness",
+                subcategories: [
+                    { id: "123e4567-e89b-12d3-a456-426614174025", name: "Action Cameras" },
+                    { id: "123e4567-e89b-12d3-a456-426614174026", name: "Fitness Bands" },
+                    { id: "123e4567-e89b-12d3-a456-426614174027", name: "Headphones" },
+                    { id: "123e4567-e89b-12d3-a456-426614174028", name: "Wristwatches" },
+                ],
+            },
+            {
+                id: "123e4567-e89b-12d3-a456-426614174029",
+                name: "GYM AND FITNESS EQUIPMENT",
+                description: "Equipment for gym and fitness activities",
+                subcategories: [
+                    { id: "123e4567-e89b-12d3-a456-426614174030", name: "Cardio machines" },
+                    { id: "123e4567-e89b-12d3-a456-426614174031", name: "Free weights" },
+                    {
+                        id: "123e4567-e89b-12d3-a456-426614174032",
+                        name: "Strength machines",
+                    },
+                    {
+                        id: "123e4567-e89b-12d3-a456-426614174033",
+                        name: "Yoga Pilates Accessories",
+                    },
+                ],
+            },
+            {
+                id: "123e4567-e89b-12d3-a456-426614174034",
+                name: "INDOOR SPORTS EQUIPMENT",
+                description: "Equipment for indoor sports",
+                subcategories: [
+                    { id: "123e4567-e89b-12d3-a456-426614174035", name: "Darts" },
+                    { id: "123e4567-e89b-12d3-a456-426614174036", name: "Pool/snooker" },
+                    { id: "123e4567-e89b-12d3-a456-426614174037", name: "Table tennis" },
+                ],
+            },
+            {
+                id: "123e4567-e89b-12d3-a456-426614174038",
+                name: "OUTDOOR SPORTS EQUIPMENT",
+                description: "Equipment for outdoor sports",
+                subcategories: [
+                    { id: "123e4567-e89b-12d3-a456-426614174039", name: "Badminton" },
+                    { id: "123e4567-e89b-12d3-a456-426614174040", name: "Long tennis" },
+                    { id: "123e4567-e89b-12d3-a456-426614174041", name: "Volleyball" },
+                ],
+            },
+            {
+                id: "123e4567-e89b-12d3-a456-426614174042",
+                name: "TEAM SPORTS EQUIPMENT",
+                description: "Equipment for team sports",
+                subcategories: [
+                    { id: "123e4567-e89b-12d3-a456-426614174043", name: "Basketball" },
+                    { id: "123e4567-e89b-12d3-a456-426614174044", name: "Soccer" },
+                    {
+                        id: "123e4567-e89b-12d3-a456-426614174045",
+                        name: "American Football",
+                    },
+                ],
+            },
+            {
+                id: "123e4567-e89b-12d3-a456-426614174046",
+                name: "WATER SPORTS EQUIPMENT",
+                description: "Gear for water sports",
+                subcategories: [
+                    { id: "123e4567-e89b-12d3-a456-426614174047", name: "Swimming gears" },
+                ],
+            },
+        ];
+        // Seed categories and subcategories into the database
+        for (const category of categories) {
+            yield prisma.category.create({
+                data: {
+                    id: category.id,
+                    name: category.name,
+                    description: category.description,
+                    subcategories: {
+                        create: category.subcategories.map((sub) => ({
+                            id: sub.id,
+                            name: sub.name,
+                            // description: sub.description || "",
+                        })),
+                    },
                 },
-            },
-            include: {
-                subcategories: true,
-            },
-        });
-        const apparel = yield prisma.category.create({
-            data: {
-                id: "123e4567-e89b-12d3-a456-426614174002",
-                name: "Apparel",
-                description: "Sportswear and apparel",
-                subcategories: {
-                    create: [
-                        {
-                            id: "123e4567-e89b-12d3-a456-426614174008",
-                            name: "Running",
-                            description: "Running gear and accessories",
-                        },
-                    ],
+                include: {
+                    subcategories: true,
                 },
-            },
-            include: {
-                subcategories: true,
-            },
-        });
-        const product1 = yield prisma.product.create({
-            data: {
-                id: "123e4567-e89b-12d3-a456-426614174003",
-                name: "Basketball",
-                description: "A high-quality basketball",
-                price: 29.99,
-                stock: 100,
-                categoryId: sportsEquipment.id,
-                subcategoryId: sportsEquipment.subcategories[0].id,
-            },
-        });
-        const product2 = yield prisma.product.create({
-            data: {
-                id: "123e4567-e89b-12d3-a456-426614174004",
-                name: "Running Shoes",
-                description: "Comfortable running shoes",
-                price: 49.99,
-                stock: 50,
-                categoryId: apparel.id,
-                subcategoryId: apparel.subcategories[0].id,
-            },
-        });
-        console.log("Categories and Products seeded");
+            });
+        }
+        console.log("Categories and Subcategories seeded successfully");
     });
 }
 function seedSizesAndColors() {

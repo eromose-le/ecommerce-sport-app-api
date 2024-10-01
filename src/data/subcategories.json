@@ -1,0 +1,237 @@
+{
+"subcategories": [
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174036",
+		"name" : "Pool\/snooker",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174034",
+		"createdAt" : "2024-09-30T20:18:22.132Z",
+		"updatedAt" : "2024-09-30T20:18:22.132Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174037",
+		"name" : "Table tennis",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174034",
+		"createdAt" : "2024-09-30T20:18:22.132Z",
+		"updatedAt" : "2024-09-30T20:18:22.132Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174039",
+		"name" : "Badminton",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174038",
+		"createdAt" : "2024-09-30T20:18:22.134Z",
+		"updatedAt" : "2024-09-30T20:18:22.134Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174015",
+		"name" : "Other Accessories",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174014",
+		"createdAt" : "2024-09-30T20:18:22.118Z",
+		"updatedAt" : "2024-09-30T20:18:22.118Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174016",
+		"name" : "Sports Bags",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174014",
+		"createdAt" : "2024-09-30T20:18:22.118Z",
+		"updatedAt" : "2024-09-30T20:18:22.118Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174017",
+		"name" : "Towels",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174014",
+		"createdAt" : "2024-09-30T20:18:22.118Z",
+		"updatedAt" : "2024-09-30T20:18:22.118Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174018",
+		"name" : "Water Bottles",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174014",
+		"createdAt" : "2024-09-30T20:18:22.118Z",
+		"updatedAt" : "2024-09-30T20:18:22.118Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174019",
+		"name" : "Weightlifting Belt",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174014",
+		"createdAt" : "2024-09-30T20:18:22.118Z",
+		"updatedAt" : "2024-09-30T20:18:22.118Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174021",
+		"name" : "Accessories",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174020",
+		"createdAt" : "2024-09-30T20:18:22.126Z",
+		"updatedAt" : "2024-09-30T20:18:22.126Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174022",
+		"name" : "Clothing",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174020",
+		"createdAt" : "2024-09-30T20:18:22.126Z",
+		"updatedAt" : "2024-09-30T20:18:22.126Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174023",
+		"name" : "Footwear",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174020",
+		"createdAt" : "2024-09-30T20:18:22.126Z",
+		"updatedAt" : "2024-09-30T20:18:22.126Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174025",
+		"name" : "Action Cameras",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174024",
+		"createdAt" : "2024-09-30T20:18:22.128Z",
+		"updatedAt" : "2024-09-30T20:18:22.128Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174026",
+		"name" : "Fitness Bands",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174024",
+		"createdAt" : "2024-09-30T20:18:22.128Z",
+		"updatedAt" : "2024-09-30T20:18:22.128Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174027",
+		"name" : "Headphones",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174024",
+		"createdAt" : "2024-09-30T20:18:22.128Z",
+		"updatedAt" : "2024-09-30T20:18:22.128Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174028",
+		"name" : "Wristwatches",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174024",
+		"createdAt" : "2024-09-30T20:18:22.128Z",
+		"updatedAt" : "2024-09-30T20:18:22.128Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174030",
+		"name" : "Cardio machines",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174029",
+		"createdAt" : "2024-09-30T20:18:22.130Z",
+		"updatedAt" : "2024-09-30T20:18:22.130Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174031",
+		"name" : "Free weights",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174029",
+		"createdAt" : "2024-09-30T20:18:22.130Z",
+		"updatedAt" : "2024-09-30T20:18:22.130Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174032",
+		"name" : "Strength machines",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174029",
+		"createdAt" : "2024-09-30T20:18:22.130Z",
+		"updatedAt" : "2024-09-30T20:18:22.130Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174033",
+		"name" : "Yoga Pilates Accessories",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174029",
+		"createdAt" : "2024-09-30T20:18:22.130Z",
+		"updatedAt" : "2024-09-30T20:18:22.130Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174035",
+		"name" : "Darts",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174034",
+		"createdAt" : "2024-09-30T20:18:22.132Z",
+		"updatedAt" : "2024-09-30T20:18:22.132Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174040",
+		"name" : "Long tennis",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174038",
+		"createdAt" : "2024-09-30T20:18:22.134Z",
+		"updatedAt" : "2024-09-30T20:18:22.134Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174041",
+		"name" : "Volleyball",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174038",
+		"createdAt" : "2024-09-30T20:18:22.134Z",
+		"updatedAt" : "2024-09-30T20:18:22.134Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174043",
+		"name" : "Basketball",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174042",
+		"createdAt" : "2024-09-30T20:18:22.137Z",
+		"updatedAt" : "2024-09-30T20:18:22.137Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174044",
+		"name" : "Soccer",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174042",
+		"createdAt" : "2024-09-30T20:18:22.137Z",
+		"updatedAt" : "2024-09-30T20:18:22.137Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174045",
+		"name" : "American Football",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174042",
+		"createdAt" : "2024-09-30T20:18:22.137Z",
+		"updatedAt" : "2024-09-30T20:18:22.137Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174047",
+		"name" : "Swimming gears",
+		"description" : null,
+		"categoryId" : "123e4567-e89b-12d3-a456-426614174046",
+		"createdAt" : "2024-09-30T20:18:22.138Z",
+		"updatedAt" : "2024-09-30T20:18:22.138Z",
+		"deletedAt" : null
+	}
+]}

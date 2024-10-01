@@ -26,7 +26,15 @@ export class ProductCategoryService {
     try {
       const productCategories = await prisma.category.findMany({
         where: {
-          ...(_query && _query),
+          ...(!!_query && _query),
+          deletedAt: null, // Fetch only active categories
+        },
+        include: {
+          subcategories: {
+            where: {
+              deletedAt: null, // Fetch only active subcategories
+            },
+          },
         },
       });
 
@@ -105,9 +113,6 @@ export class ProductCategoryService {
         data: {
           name,
           ...(description && { description }),
-        },
-        include: {
-          subcategories: true,
         },
       });
 

@@ -29,7 +29,14 @@ class ProductCategoryService {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const productCategories = yield prisma_1.default.category.findMany({
-                    where: Object.assign({}, (_query && _query)),
+                    where: Object.assign(Object.assign({}, (!!_query && _query)), { deletedAt: null }),
+                    include: {
+                        subcategories: {
+                            where: {
+                                deletedAt: null, // Fetch only active subcategories
+                            },
+                        },
+                    },
                 });
                 if (!productCategories) {
                     return _next(new errorResponse_1.ErrorResponse(constants_1.ERROR_MESSAGES.PRODUCT_CATEGORY_NOT_FOUND, constants_1.HTTP_STATUS_CODE[400].code));
@@ -82,9 +89,6 @@ class ProductCategoryService {
                 validateProductCategory(_payload);
                 const productCategory = yield prisma_1.default.category.create({
                     data: Object.assign({ name }, (description && { description })),
-                    include: {
-                        subcategories: true,
-                    },
                 });
                 if (!productCategory) {
                     throw new errorResponse_1.ErrorResponse(constants_1.ERROR_MESSAGES.PRODUCT_CATEGORY_CREATE_FAILED, constants_1.HTTP_STATUS_CODE[400].code);

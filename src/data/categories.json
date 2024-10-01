@@ -1,0 +1,67 @@
+{
+"categories": [
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174014",
+		"name" : "ATHLETIC ACCESSORIES",
+		"description" : "Accessories for athletic activities",
+		"createdAt" : "2024-09-30T20:18:22.118Z",
+		"updatedAt" : "2024-09-30T20:18:22.118Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174020",
+		"name" : "ATHLETIC APPARELS",
+		"description" : "Clothing, footwear, and accessories for athletes",
+		"createdAt" : "2024-09-30T20:18:22.126Z",
+		"updatedAt" : "2024-09-30T20:18:22.126Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174024",
+		"name" : "ELECTRONICS AND GADGETS",
+		"description" : "Electronic devices for sports and fitness",
+		"createdAt" : "2024-09-30T20:18:22.128Z",
+		"updatedAt" : "2024-09-30T20:18:22.128Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174029",
+		"name" : "GYM AND FITNESS EQUIPMENT",
+		"description" : "Equipment for gym and fitness activities",
+		"createdAt" : "2024-09-30T20:18:22.130Z",
+		"updatedAt" : "2024-09-30T20:18:22.130Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174034",
+		"name" : "INDOOR SPORTS EQUIPMENT",
+		"description" : "Equipment for indoor sports",
+		"createdAt" : "2024-09-30T20:18:22.132Z",
+		"updatedAt" : "2024-09-30T20:18:22.132Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174038",
+		"name" : "OUTDOOR SPORTS EQUIPMENT",
+		"description" : "Equipment for outdoor sports",
+		"createdAt" : "2024-09-30T20:18:22.134Z",
+		"updatedAt" : "2024-09-30T20:18:22.134Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174042",
+		"name" : "TEAM SPORTS EQUIPMENT",
+		"description" : "Equipment for team sports",
+		"createdAt" : "2024-09-30T20:18:22.137Z",
+		"updatedAt" : "2024-09-30T20:18:22.137Z",
+		"deletedAt" : null
+	},
+	{
+		"id" : "123e4567-e89b-12d3-a456-426614174046",
+		"name" : "WATER SPORTS EQUIPMENT",
+		"description" : "Gear for water sports",
+		"createdAt" : "2024-09-30T20:18:22.138Z",
+		"updatedAt" : "2024-09-30T20:18:22.138Z",
+		"deletedAt" : null
+	}
+]}
