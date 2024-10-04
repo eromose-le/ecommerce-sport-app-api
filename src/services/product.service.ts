@@ -119,29 +119,35 @@ export class ProductService {
           ],
         }),
 
-        colors: {
-          some: {
-            colorId: {
-              ...(color ? { in: color } : {}),
+        // Conditionally filter by color
+        ...(Array.isArray(color) &&
+          color.length > 0 && {
+            colors: {
+              some: {
+                colorId: { in: color },
+              },
             },
-          },
-        },
+          }),
 
-        sizes: {
-          some: {
-            sizeId: {
-              ...(size ? { in: size } : {}),
+        // Conditionally filter by size
+        ...(Array.isArray(size) &&
+          size.length > 0 && {
+            sizes: {
+              some: {
+                sizeId: { in: size },
+              },
             },
-          },
-        },
+          }),
 
-        types: {
-          some: {
-            typeId: {
-              ...(type ? { in: type } : {}),
+        // Conditionally filter by type
+        ...(Array.isArray(type) &&
+          type.length > 0 && {
+            types: {
+              some: {
+                typeId: { in: type },
+              },
             },
-          },
-        },
+          }),
       };
 
       const [results, count] = await Promise.all([

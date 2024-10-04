@@ -9,7 +9,8 @@ const authService = new AuthService();
 const userService = new UserService();
 
 export const getUsers = asyncHandler(async (req, res, next) => {
-  const users = await userService.getUsers(next);
+  const query = req.query;
+  const users = await userService.getUsers(query, next);
   res.status(200).json({
     message: "Fetch users successfully",
     data: users,

@@ -29,7 +29,8 @@ const verifyOwner_js_1 = require("../middleware/verifyOwner.js");
 const authService = new auth_service_js_1.AuthService();
 const userService = new user_service_js_1.UserService();
 exports.getUsers = (0, async_js_1.asyncHandler)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const users = yield userService.getUsers(next);
+    const query = req.query;
+    const users = yield userService.getUsers(query, next);
     res.status(200).json({
         message: "Fetch users successfully",
         data: users,

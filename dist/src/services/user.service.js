@@ -27,6 +27,7 @@ exports.UserService = void 0;
 const constants_1 = require("../constants");
 const prisma_1 = __importDefault(require("../lib/prisma"));
 const errorResponse_1 = require("../utils/errorResponse");
+const utils_1 = require("../utils");
 const userFilter = {
     id: true,
     email: true,
@@ -55,16 +56,50 @@ class UserService {
             }
         });
     }
-    getUsers(_next) {
+    getUsers(_query, _next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const users = yield prisma_1.default.user.findMany({
-                // select: { ...userFilter },
-                });
-                if (!users) {
+                const queryParams = { filter: _query };
+                const { filter } = queryParams;
+                const { sort, page, limit, q, createdAt, updatedAt } = filter !== null && filter !== void 0 ? filter : {};
+                const { take, offset: skip, page: currentPage, limit: queryLimit, } = (0, utils_1.getPaginationParams)(page, limit);
+                const whereFilter = Object.assign(Object.assign(Object.assign({ deletedAt: null }, (updatedAt && {
+                    updatedAt: {
+                        gte: new Date(updatedAt).toISOString(),
+                    },
+                })), (createdAt && {
+                    createdAt: {
+                        gte: new Date(createdAt).toISOString(),
+                    },
+                })), (q && {
+                    OR: [
+                        { firstName: { contains: q, mode: "insensitive" } },
+                        { lastName: { contains: q, mode: "insensitive" } },
+                        { email: { contains: q, mode: "insensitive" } },
+                    ],
+                }));
+                const [results, count] = yield Promise.all([
+                    prisma_1.default.user.findMany({
+                        where: whereFilter,
+                        orderBy: Object.assign({}, (sort && {
+                            lastName: sort === "asc" ? "asc" : "desc",
+                        })), // Add sorting here
+                        take,
+                        skip,
+                    }),
+                    prisma_1.default.user.count({
+                        where: whereFilter,
+                    }),
+                ]);
+                if (!results) {
                     throw new errorResponse_1.ErrorResponse(constants_1.ERROR_MESSAGES.USER_NOT_FOUND, constants_1.HTTP_STATUS_CODE[400].code);
                 }
-                return users;
+                return {
+                    currentPage,
+                    count,
+                    pageCount: (0, utils_1.getPageCount)(count, queryLimit),
+                    results,
+                };
             }
             catch (err) {
                 _next(err);

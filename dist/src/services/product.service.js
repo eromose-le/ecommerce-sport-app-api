@@ -34,7 +34,7 @@ class ProductService {
                 const { filter } = _query;
                 const { sort, page, limit, q, category, subcategory, stock, color, type, size, price, minPrice, maxPrice, createdAt, updatedAt, } = filter !== null && filter !== void 0 ? filter : {};
                 const { take, offset: skip, page: currentPage, limit: queryLimit, } = (0, utils_1.getPaginationParams)(page, limit);
-                const whereFilter = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ deletedAt: null }, (category && {
+                const whereFilter = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ deletedAt: null }, (category && {
                     category: {
                         name: category,
                     },
@@ -72,19 +72,28 @@ class ProductService {
                         { name: { contains: q, mode: "insensitive" } },
                         { description: { contains: q, mode: "insensitive" } },
                     ],
-                })), { colors: {
+                })), (Array.isArray(color) &&
+                    color.length > 0 && {
+                    colors: {
                         some: {
-                            colorId: Object.assign({}, (color ? { in: color } : {})),
+                            colorId: { in: color },
                         },
-                    }, sizes: {
+                    },
+                })), (Array.isArray(size) &&
+                    size.length > 0 && {
+                    sizes: {
                         some: {
-                            sizeId: Object.assign({}, (size ? { in: size } : {})),
+                            sizeId: { in: size },
                         },
-                    }, types: {
+                    },
+                })), (Array.isArray(type) &&
+                    type.length > 0 && {
+                    types: {
                         some: {
-                            typeId: Object.assign({}, (type ? { in: type } : {})),
+                            typeId: { in: type },
                         },
-                    } });
+                    },
+                }));
                 const [results, count] = yield Promise.all([
                     prisma_1.default.product.findMany({
                         where: whereFilter,

@@ -28,10 +28,11 @@ const product_color_route_1 = __importDefault(require("./src/routes/product-colo
 const product_category_route_1 = __importDefault(require("./src/routes/product-category.route"));
 const product_subcategory_route_1 = __importDefault(require("./src/routes/product-subcategory.route"));
 const uploadthing_1 = require("./src/services/providers/uploadthing");
+const cors_2 = require("./src/configs/cors");
 const app = (0, express_1.default)();
 const apiPath = "/api/v1";
 app.use((0, express_fileupload_1.default)());
-app.use((0, cors_1.default)({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use((0, cors_1.default)(cors_2.corsOptions));
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 if (EnvKeys_1.EnvKeys.isLocal()) {

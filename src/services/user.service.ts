@@ -2,8 +2,10 @@ import { NextFunction } from "express";
 import { ERROR_MESSAGES, HTTP_STATUS_CODE } from "../constants";
 import prisma from "../lib/prisma";
 import { ErrorResponse } from "../utils/errorResponse";
-import { UpdateUserResponse, UpdateUserParams } from "types/user.types";
+import { UpdateUserResponse, UpdateUserParams } from "../types/user.types";
 import { User } from "../models";
+import { getPageCount, getPaginationParams } from "../utils";
+import { PaginatedApiResponse } from "../types/global.types";
 
 const userFilter = {
   id: true,
@@ -43,20 +45,77 @@ export class UserService {
     }
   }
 
-  async getUsers(_next: NextFunction): Promise<User[]> {
+  async getUsers(_query: any, _next: NextFunction) {
     try {
-      const users = await prisma.user.findMany({
-        // select: { ...userFilter },
-      });
+      const queryParams = { filter: _query };
+      const { filter } = queryParams;
 
-      if (!users) {
+      const { sort, page, limit, q, createdAt, updatedAt } = filter ?? {};
+
+      const {
+        take,
+        offset: skip,
+        page: currentPage,
+        limit: queryLimit,
+      } = getPaginationParams(page as string, limit as string);
+
+      const whereFilter: any = {
+        deletedAt: null, // Products that aren't soft-deleted
+
+        // Filter by date created and updated
+        ...(updatedAt && {
+          updatedAt: {
+            gte: new Date(updatedAt).toISOString(),
+          },
+        }),
+
+        // Filter by creation date (newly uploaded products)
+        ...(createdAt && {
+          createdAt: {
+            gte: new Date(createdAt).toISOString(),
+          },
+        }),
+
+        // Dynamic search across various fields
+        ...(q && {
+          OR: [
+            { firstName: { contains: q, mode: "insensitive" } },
+            { lastName: { contains: q, mode: "insensitive" } },
+            { email: { contains: q, mode: "insensitive" } },
+          ],
+        }),
+      };
+
+      const [results, count] = await Promise.all([
+        prisma.user.findMany({
+          where: whereFilter,
+          orderBy: {
+            ...(sort && {
+              lastName: sort === "asc" ? "asc" : "desc",
+            }),
+          }, // Add sorting here
+          take,
+          skip,
+        }),
+
+        prisma.user.count({
+          where: whereFilter,
+        }),
+      ]);
+
+      if (!results) {
         throw new ErrorResponse(
           ERROR_MESSAGES.USER_NOT_FOUND,
           HTTP_STATUS_CODE[400].code
         );
       }
 
-      return users;
+      return {
+        currentPage,
+        count,
+        pageCount: getPageCount(count, queryLimit),
+        results,
+      };
     } catch (err) {
       _next(err);
       throw new ErrorResponse(

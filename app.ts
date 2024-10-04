@@ -24,12 +24,13 @@ import productColorRoute from "./src/routes/product-color.route";
 import productCategoryRoute from "./src/routes/product-category.route";
 import productSubcategoryRoute from "./src/routes/product-subcategory.route";
 import { uploadRouter } from "./src/services/providers/uploadthing";
+import { corsOptions } from "./src/configs/cors";
 
 const app: Express = express();
 const apiPath = "/api/v1";
 
 app.use(fileUpload());
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
